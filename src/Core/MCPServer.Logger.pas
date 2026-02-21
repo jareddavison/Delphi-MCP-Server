@@ -132,8 +132,12 @@ procedure TLogger.EnsureLogFile;
 begin
   if FLogToFile and not Assigned(FLogFile) then
   begin
-    FLogFile := TStreamWriter.Create(FLogFileName, True, TEncoding.UTF8);
-    FLogFile.AutoFlush := True;
+    try
+      FLogFile := TStreamWriter.Create(FLogFileName, True, TEncoding.UTF8);
+      FLogFile.AutoFlush := True;
+    except
+      FLogToFile := False;
+    end;
   end;
 end;
 
