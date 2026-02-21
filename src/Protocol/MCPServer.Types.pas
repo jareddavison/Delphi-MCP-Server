@@ -31,6 +31,7 @@ type
     constructor Create(const AValue1, AValue2: string); overload;
     constructor Create(const AValue1, AValue2, AValue3: string); overload;
     constructor Create(const AValue1, AValue2, AValue3, AValue4: string); overload;
+    constructor Create(const AValue1, AValue2, AValue3, AValue4, AValue5: string); overload;
     property Values: TArray<string> read FValues;
   end;
 
@@ -162,6 +163,17 @@ begin
   FValues[1] := AValue2;
   FValues[2] := AValue3;
   FValues[3] := AValue4;
+end;
+
+constructor SchemaEnumAttribute.Create(const AValue1, AValue2, AValue3, AValue4, AValue5: string);
+begin
+  inherited Create;
+  SetLength(FValues, 5);
+  FValues[0] := AValue1;
+  FValues[1] := AValue2;
+  FValues[2] := AValue3;
+  FValues[3] := AValue4;
+  FValues[4] := AValue5;
 end;
 
 { TMCPInitializeResponse }
